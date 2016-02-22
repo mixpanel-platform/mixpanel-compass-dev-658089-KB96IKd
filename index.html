@@ -50,8 +50,8 @@
             console.log(results.json);
             console.log(results.values());
             var objDates = results.values()
-            for (i in objDates){
-              for (x in objDates[i])
+            for (var i in objDates){
+              for (var x in objDates[i])
               console.log(objDates[i][x]);
             }
           });
