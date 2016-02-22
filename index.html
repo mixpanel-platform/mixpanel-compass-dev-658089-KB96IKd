@@ -51,7 +51,8 @@
             console.log(results.values());
             var objDates = results.values()
             for (i in objDates){
-              console.log(objDates[i]);
+              for (x in objDates[i])
+              console.log(objDates[i][x]);
             }
           });
       };
