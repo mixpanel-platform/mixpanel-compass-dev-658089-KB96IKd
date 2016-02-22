@@ -50,11 +50,12 @@
             console.log(results.json);
             console.log(results.values());
             var objDates = results.values()
+            var newObj = {};
             for (var i in objDates){
               for (var x in objDates[i]){
                   x = moment(x).calendar()
-                  console.log(x)
-                  console.log(objDates[i])
+                  newObj[x] = objDates[i][x]
+                  console.log(newObj);
               };
             };
           });
