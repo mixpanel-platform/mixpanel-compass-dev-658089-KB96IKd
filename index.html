@@ -50,10 +50,11 @@
             console.log(results.json);
             console.log(results.values());
             var objDates = results.values()
-            for (var i in objDates.user_conducts_search){
-
-              console.log(i);
-            }
+            for (var i in objDates){
+              for (var x in objectDates[i]){
+                console.log(x);
+              };
+            };
           });
       };
       // eventSelect.on('change', function(e, eventName) {
