@@ -17,9 +17,17 @@
     </div>
     <div id="table"></div>
     <script>
-      var eventSelect = $('#eventSelect').MPEventSelect();
-      var propSelect  = $('#propSelect').MPPropertySelect();
-      var dateSelect  = $('#dateSelect').MPDatepicker();
+      //set the parameters you want for your graphs
+      var params = {
+        type: 'general',     // analysis type for the data, can be 'general', 'unique', or 'average'
+        unit: 'week',        // level of granularity of the data, can be 'minute', 'hour', 'day', 'week', 'month'
+        interval: 12         // number of "units" back to include
+      };
+
+      
+      //var eventSelect = $('#eventSelect').MPEventSelect();
+      //var propSelect  = $('#propSelect').MPPropertySelect();
+      //var dateSelect  = $('#dateSelect').MPDatepicker();
       var eventGraph  = $('#graph').MPChart({chartType: 'line'});
       var eventTable  = $('#table').MPTable({
         showPercentages: true,
@@ -27,24 +35,25 @@
       });
 
       var runQuery = function() {
-        var eventName = eventSelect.MPEventSelect('value'),
-            propName  = propSelect.MPPropertySelect('value'),
-            dateRange = dateSelect.MPDatepicker('value');
+        //var eventName = eventSelect.MPEventSelect('value'),
+            //propName  = propSelect.MPPropertySelect('value'),
+            //dateRange = dateSelect.MPDatepicker('value');
 
-        if (eventName) {
-          MP.api.segment(eventName, propName, dateRange).done(function(results) {
+        //if (eventName) {
+          MP.api.events('user_conducts_search','commitment_request','showsheet_creator_opened', params).done(function(results) {
             eventGraph.MPChart('setData', results);
             eventTable.MPTable('setData', results);
           });
-        }
+        //}
       };
-      eventSelect.on('change', function(e, eventName) {
-        propSelect.MPPropertySelect('setEvent', eventName);
-        $("#by").show();
-        runQuery();
-      });
-      propSelect.on('change', runQuery);
-      dateSelect.on('change', runQuery);
+      // eventSelect.on('change', function(e, eventName) {
+      //   propSelect.MPPropertySelect('setEvent', eventName);
+      //   $("#by").show();
+      //   runQuery();
+      // });
+      // propSelect.on('change', runQuery);
+      // dateSelect.on('change', runQuery);
+      runQuery();
     </script>
   </body>
 </html>
