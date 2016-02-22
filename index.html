@@ -22,7 +22,7 @@
     </div>
     <div id="table"></div>
     <script>
-      var results;
+      
       //set the parameters you want for your graphs
       var params = {
         type: 'general',     // analysis type for the data, can be 'general', 'unique', or 'average'
@@ -49,6 +49,7 @@
           MP.api.events('user_conducts_search','commitment_request','showsheet_creator_opened', params).done(function(results) {
             eventGraph.MPChart('setData', results);
             eventTable.MPTable('setData', results);
+            console.log(results);
           });
         //}
       };
@@ -60,7 +61,7 @@
       // propSelect.on('change', runQuery);
       // dateSelect.on('change', runQuery);
       runQuery();
-      console.log(results);
+      
     </script>
   </body>
 </html>
