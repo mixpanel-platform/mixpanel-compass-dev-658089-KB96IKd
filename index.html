@@ -43,18 +43,16 @@
       });
 
       var runQuery = function() {
-        //var eventName = eventSelect.MPEventSelect('value'),
-            //propName  = propSelect.MPPropertySelect('value'),
-            //dateRange = dateSelect.MPDatepicker('value');
-
-        //if (eventName) {
+          
           MP.api.events('user_conducts_search','commitment_request','showsheet_creator_opened', params).done(function(results) {
             eventGraph.MPChart('setData', results);
             eventTable.MPTable('setData', results);
             console.log(results.json);
             console.log(results.values());
+            Object.getOwnPropertyNames(results.values()).forEach(function(val, idx, array) {
+              console.log(val + ' -> ' + obj[val]);
+            });
           });
-        //}
       };
       // eventSelect.on('change', function(e, eventName) {
       //   propSelect.MPPropertySelect('setEvent', eventName);
