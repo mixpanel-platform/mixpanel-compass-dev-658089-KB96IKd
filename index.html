@@ -49,9 +49,10 @@
             eventTable.MPTable('setData', results);
             console.log(results.json);
             console.log(results.values());
-            var stuff = results.values()
-            Object.getOwnPropertyNames(stuff).forEach(function(val, idx, array) {
-              console.log(val + ' -> ' + stuff[val]);
+            var objDates = results.values()
+            for (i in objDates){
+              console.log(objDates[i];)
+            }
             });
           });
       };
